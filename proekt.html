@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌴 School Calendar - Tropical Edition</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #fbd786, #f7797d, #c6ffdd);
+      color: #333;
+    }
+
+    header {
+      background-color: #ff6f61;
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      text-shadow: 2px 2px #ffde59;
+    }
+
+    .calendar-wrapper {
+      max-width: 1100px;
+      margin: 30px auto;
+      background-color: #fff8f0;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffb347;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: white;
+    }
+
+    .calendar-header h2 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .calendar-header button {
+      background-color: #ff6f61;
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .calendar-header button:hover {
+      background-color: #ffde59;
+      color: #000;
+    }
+
+    .day-names, .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin-top: 10px;
+    }
+
+    .day-names div {
+      background-color: #ffde59;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 5px;
+      color: #333;
+    }
+
+    .day {
+      position: relative;
+      border: 1px solid #f5c16c;
+      background: #fff;
+      height: 120px;
+      padding: 5px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .day:hover {
+      background-color: #fff6e0;
+    }
+
+    .day-number {
+      font-weight: bold;
+      color: #ff6f61;
+    }
+
+    textarea {
+      width: 100%;
+      height: 85px;
+      margin-top: 5px;
+      border: none;
+      resize: none;
+      font-size: 0.85rem;
+      background: transparent;
+      color: #333;
+      outline: none;
+    }
+
+    .media-section {
+      max-width: 1100px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .media-section h2 {
+      color: #ff6f61;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .media-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .media-grid img, .media-grid video {
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .footer {
+      text-align: center;
+      margin: 30px 0;
+      color: white;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌺 School Calendar - Tropical Edition 📅</h1>
+  </header>
+
+  <div class="calendar-wrapper">
+    <div class="calendar-header">
+      <button onclick="changeMonth(-1)">◀️ Prev</button>
+      <h2 id="monthYear"></h2>
+      <button onclick="changeMonth(1)">Next ▶️</button>
+    </div>
+    <div class="day-names">
+      <div>Sun</div>
+      <div>Mon</div>
+      <div>Tue</div>
+      <div>Wed</div>
+      <div>Thu</div>
+      <div>Fri</div>
+      <div>Sat</div>
+    </div>
+    <div class="calendar-days" id="calendarDays"></div>
+  </div>
+
+  <div class="media-section">
+    <h2>📸 My School Memories</h2>
+    <div class="media-grid">
+      <!-- Add your images or videos below -->
+      <img src="https://via.placeholder.com/300x200?text=My+Classroom" alt="Classroom" />
+      <video controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <img src="https://via.placeholder.com/300x200?text=My+Classroom" alt="Classroom" />
+      <video controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <img src="https://via.placeholder.com/300x200?text=My+Classroom" alt="Classroom" />
+      <video controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video><img src="https://via.placeholder.com/300x200?text=My+Classroom" alt="Classroom" />
+      <video controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <div class="footer">
+    🌴 Keep organized, stay cool! | © 2025 Your School
+  </div>
+
+  <script>
+    const calendarDays = document.getElementById('calendarDays');
+    const monthYear = document.getElementById('monthYear');
+
+    let currentMonth = 4; // May
+    let currentYear = 2025;
+
+    function renderCalendar(month, year) {
+      const date = new Date(year, month);
+      const monthName = date.toLocaleString('default', { month: 'long' });
+      monthYear.textContent = `${monthName} ${year}`;
+
+      calendarDays.innerHTML = '';
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < firstDay; i++) {
+        calendarDays.innerHTML += `<div></div>`;
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const key = `${year}-${month}-${day}`;
+        const savedNote = localStorage.getItem(key) || "";
+
+        const cell = document.createElement('div');
+        cell.classList.add('day');
+
+        const number = document.createElement('div');
+        number.classList.add('day-number');
+        number.textContent = day;
+
+        const note = document.createElement('textarea');
+        note.value = savedNote;
+        note.placeholder = 'Write...';
+        note.addEventListener('input', () => {
+          localStorage.setItem(key, note.value);
+        });
+
+        cell.appendChild(number);
+        cell.appendChild(note);
+        calendarDays.appendChild(cell);
+      }
+    }
+
+    function changeMonth(offset) {
+      currentMonth += offset;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      } else if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      renderCalendar(currentMonth, currentYear);
+    }
+
+    renderCalendar(currentMonth, currentYear);
+  </script>
+</body>
+</html>
+
+  
+
+
+
+
+
